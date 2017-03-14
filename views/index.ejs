@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <title>奇怪的聊天室</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css"/>
+    <link type="text/css"  rel="stylesheet" href="/css/media320x410.css"/>
+    <script>
+        var user = '<%- JSON.stringify(user)%>';
+        var userId = '<%= user.pk_user_id %>';
+        var nickName = '<%= user.nick_name %>';
+        var style = '<%= user.style %>';
+        var headImg = '<%= user.headImg %>';
+    </script>
+</head>
+
+<body>
+<!--头部 begin-->
+<div class="head">
+    <div class="logo"></div>
+    <p class="tips">点击昵称退出登录</p>
+    <% if (user.pk_user_id && user.nick_name) { %>
+    <div class="login btn" id="login" style="background: none;"><%= user.nick_name %><em></em><em></em></div>
+    <% } else { %>
+    <div class="login btn" id="login"><em></em><em></em></div>
+    <% } %>
+    <b>^</b>
+</div>
+<!--头部 end-->
+<div class="main">
+    <!--左侧 begin-->
+    <div class="left">
+        <!--好友列表 begin-->
+        <div class="friends">
+            <div class="F-Top"></div>
+            <ul id="userList">
+            </ul>
+        </div>
+        <!--好友列表 end-->
+        <!--因人而异的框框 begin-->
+        <div class="king"
+                <% if (user.user_type_id != 2) { %>
+             style="display: none;"
+                <% } %>
+        >
+            <div class="K-Top"></div>
+            <ul>
+                <li><input id="pmWord" type="text" placeholder="平民词"/></li>
+                <li><input id="wdWord" type="text" placeholder="卧底词"/></li>
+                <li><input id="wdName" type="text" placeholder="卧底"/></li>
+            </ul>
+            <div id="startGame" class="startGame"></div>
+            <div class="startTalk"></div>
+        </div>
+        <div class="king"
+                <% if (user.user_type_id != 2) { %>
+             style="display: none;"
+                <% } %>
+        >
+            <div class="K-Top"></div>
+            <ul>
+                <li><input id="startNum" type="text" placeholder="开始值"/></li>
+                <li><input id="endNum" type="text" placeholder="结束值"/></li>
+                <li><input id="randomNum" type="text" placeholder="随机数字"/></li>
+            </ul>
+            <div id="startNumGame" class="startGame"></div>
+        </div>
+        <!--因人而异的框框 end-->
+        <!--因人而异的框框 begin-->
+        <div class="myword"
+                <% if (user.user_type_id != 1) { %>
+             style="display: none;"
+                <% } %>
+        >
+            <div class="M-Top"></div>
+            <ul>
+                <li><input id="yourWord" readonly type="text" value=""/></li>
+            </ul>
+        </div>
+        <!--因人而异的框框 end-->
+    </div>
+    <!--左侧 end-->
+    <!--右侧 begin-->
+    <div class="right">
+        <!--聊天框 begin-->
+        <div id="msgBox" class="talk">
+        </div>
+        <!--聊天框 end-->
+        <!--发送 begin-->
+        <div class="send">
+            <input id="txtSend" type="text" placeholder="输入你想要哔哔的话"/>
+            <div class="submit btn"><em></em><em></em></div>
+        </div>
+        <!--发送 end-->
+    </div>
+    <!--右侧 end-->
+</div>
+<!--登录弹窗 begin-->
+<div class="AG_login" style="display:none;">
+    <input id="userName" type="text" value="" placeholder="登录名"/>
+    <input id="passWord" type="text" value="" placeholder="密码"/>
+    <div id="doLogin" class="ISlogin">确认登录</div>
+</div>
+<!--登录弹窗 end-->
+<!--投票弹框 begin-->
+<!--投票弹框 end-->
+<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/socket.io-1.4.5.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+</body>
+</html>

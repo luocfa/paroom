@@ -1,0 +1,15 @@
+@media screen and (max-width: 414px){
+	body{max-width:414px;}
+	.head{display: inline-block;height: auto; position: relative;height:-10px;transition:all 0.5s;}
+	.logo,.login{display:none;}
+	.main{width:100%;}
+	.left{position:fixed;z-index:999;background-color:#222222;padding:10px;left:-235px;transition:all 0.5s;}
+	.talk{max-height:76%;}
+	.right{width:98%;}
+	.T-word{max-width: 79%;}
+	.submit{display:none;}
+	.send input{width: 95%;}
+	.logo{background-size: 100%;width: 50%;    margin-top: 30px;}
+	.AG_login{z-index:999;position:fixed;top: 10%;width:100%;}
+	.head b{left: 46%;    bottom: -24px;    background-color: #ffffff;height: 24px;width: 61px;display: inline-block;position: absolute;font-size: 20px;    text-align: center;}
+}
